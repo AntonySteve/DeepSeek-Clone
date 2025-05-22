@@ -19,7 +19,7 @@ export async function POST(req){
 
     const userData = {
         _id: data.id,
-        email: data.email_addresses[0].email_addresses,
+        email: data.email_addresses[0].email_address,
         name: `${data.first_name} ${data.last_name}`,
         image: data.image_url,
     };
@@ -36,7 +36,7 @@ export async function POST(req){
             break;
 
         case 'user.deleted':
-            await User.findByIdAndDelete(data.id, userData)
+            await User.findByIdAndDelete(data.id)
             break;
 
         default:
